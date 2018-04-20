@@ -11,7 +11,8 @@ class DoubanSpider(CrawlSpider):
     allowed_domains = ['douban.com']
     start_urls = ['https://movie.douban.com/']
     rules = (
-        Rule(LinkExtractor(allow=r'/subject/[0-9]+/*$'or r'/subject/[0-9]+/'), callback='parse_item', follow=True),
+        Rule(LinkExtractor(allow=r'/subject/[0-9]+/\?from=showing$'), callback='parse_item', follow=True),
+        Rule(LinkExtractor(allow=r'/subject/[0-9]+/$'), callback='parse_item', follow=True),
     )
 
     def parse_item(self, response):

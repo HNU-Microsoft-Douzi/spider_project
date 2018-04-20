@@ -51,19 +51,19 @@ USER_AGENTS = [
 '''
 
 IPPOOL=[
-    {"ipaddr":"115.223.254.204:9000"},
-    {"ipaddr":"58.217.14.139:9000"},
-    {"ipaddr":"115.223.221.118:9000"},
-    {"ipaddr":"114.235.23.157:9000"},
-    {"ipaddr":"115.223.204.134:9000"},
-    {"ipaddr":"117.90.4.198:9000"},
-    {"ipaddr":"39.81.56.106:9000"},
-    {"ipaddr":"115.218.124.207:9000"},
-    {"ipaddr":"115.223.224.172:9000"},
-    {"ipaddr":"180.118.33.180:9000"},
-    {"ipaddr":"115.223.225.110:9000"},
-    {"ipaddr":"115.223.221.20:9000"},
-    {"ipaddr":"121.232.148.191:9000"},
+    {"ipaddr":"119.128.172.105:8118"},
+    {"ipaddr":"175.42.125.195:8118"},
+    {"ipaddr":"49.79.192.143:61234"},
+    {"ipaddr":"121.62.56.78:61234"},
+    {"ipaddr":"183.159.90.127:18118"},
+    {"ipaddr":"221.202.178.235:61202"},
+    {"ipaddr":"182.88.212.46:8123"},
+    {"ipaddr":"183.159.92.52:18118"},
+    {"ipaddr":"123.8.84.143:61202"},
+    {"ipaddr":"60.177.230.127:18118"},
+    {"ipaddr":"60.177.231.248:18118"},
+    {"ipaddr":"118.180.125.206:8123"},
+    {"ipaddr":"27.193.172.125:61202"},
 ]
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -72,8 +72,8 @@ IPPOOL=[
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
-# Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+# 设置爬虫的默认并发数，并发指的是同时处理request的请求个数
+CONCURRENT_REQUESTS = 100
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -84,27 +84,30 @@ ROBOTSTXT_OBEY = False
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-# COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
 
-#请求超时
+#设置下载延迟
 DOWNLOAD_DELAY = 5
 #重新请求
-RETRY_ENABLED = True
+RETRY_ENABLED = False
 #重试次数
-RETRY_TIMES = 3
+# RETRY_TIMES = 3
+
+#设置下载超时
+DOWNLOAD_TIMEOUT = 15
 
 # Override the default request headers:
-# DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#   'Cookies': 'bid=D3VeUmdS2xM; ll="118267"; _vwo_uuid_v2=D036E792B19965F77F65F1A6ACCED5ADF|bd161d23b8c487b24d1933da0dfa5a38; gr_user_id=7e780f55-10cf-4e15-87ac-685c125212b8; __utmc=30149280; __utmc=223695111; viewed="30170596_27008704_4289836"; ap=1; __utmz=223695111.1523438767.9.7.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; __utmz=30149280.1523450282.16.10.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; ct=y; __utma=30149280.1914999939.1519826275.1523689619.1523692425.25; __utma=223695111.745632772.1515342962.1523689619.1523692425.21; _pk_ref.100001.4cf6=%5B%22%22%2C%22%22%2C1523944610%2C%22https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DuvH3wsfsrnKyNNxRGARy2LHp_M-9C6uYaiwjXKBxNeVbbsxGsVu8s9adoH7P1Mrd%26wd%3D%26eqid%3Df75096940003e3fa000000055acdd4d0%22%5D; _pk_id.100001.4cf6=1b692747a2e89ea7.1515342824.21.1523944610.1523694804.; _pk_ses.100001.4cf6=*',
-#   'USER_AGENT': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64',
-#   'Referer': 'https://movie.douban.com/',
-#   'Host': 'movie.douban.com'
-# }
+DEFAULT_REQUEST_HEADERS = {
+  'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'Accept-Language': 'en',
+  'Cookies': 'bid=D3VeUmdS2xM; ll="118267"; _vwo_uuid_v2=D036E792B19965F77F65F1A6ACCED5ADF|bd161d23b8c487b24d1933da0dfa5a38; gr_user_id=7e780f55-10cf-4e15-87ac-685c125212b8; __utmc=30149280; __utmc=223695111; viewed="30170596_27008704_4289836"; ap=1; __utmz=223695111.1523438767.9.7.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; __utmz=30149280.1523450282.16.10.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; ct=y; __utma=30149280.1914999939.1519826275.1523689619.1523692425.25; __utma=223695111.745632772.1515342962.1523689619.1523692425.21; _pk_ref.100001.4cf6=%5B%22%22%2C%22%22%2C1523944610%2C%22https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DuvH3wsfsrnKyNNxRGARy2LHp_M-9C6uYaiwjXKBxNeVbbsxGsVu8s9adoH7P1Mrd%26wd%3D%26eqid%3Df75096940003e3fa000000055acdd4d0%22%5D; _pk_id.100001.4cf6=1b692747a2e89ea7.1515342824.21.1523944610.1523694804.; _pk_ses.100001.4cf6=*',
+  'USER_AGENT': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64',
+  'Referer': 'https://movie.douban.com/',
+  'Host': 'movie.douban.com'
+}
 
 # USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.40'
 
@@ -118,10 +121,10 @@ RETRY_TIMES = 3
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     #启用自己的user-agent代理
-    # 'db.middlewares.RandomUserAgent': 1,
+    'db.middlewares.RandomUserAgent': 1,
     'db.middlewares.DbDownloaderMiddleware': 543,
     # 禁用Scrapy默认启动的UserAgentMiddleware
-    # 'scrapy.downloadmiddlewares.useragent.UserAgentMiddleware': None,
+    'scrapy.downloadmiddlewares.useragent.UserAgentMiddleware': None,
     # 'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 543,
     # 'db.middlewares.MyproxiesSpiderMiddleware': 125
 
@@ -140,7 +143,7 @@ ITEM_PIPELINES = {
     'db.pipelines.DbPipeline': 300,
 }
 
-LOG_LEVEL = 'DEBUG'
+LOG_LEVEL = 'INFO'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
